@@ -1,0 +1,33 @@
+{
+  "name": "mauchede/tinc-configuration",
+  "type": "project",
+  "description": "tinc-configuration gives the possibility to easily manage tinc",
+  "keywords": [
+    "tinc",
+    "configuration"
+  ],
+  "homepage": "http://github.com/mauchede/tinc-configuration",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Morgan Auchede",
+      "email": "morgan.auchede@gmail.com",
+      "homepage": "http://github.com/mauchede"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Mauchede\\TincConfiguration\\": "src/"
+    }
+  },
+  "require": {
+    "myclabs/php-enum": "^1.4",
+    "pimple/pimple": "^3.0",
+    "s1lentium/iptools": "^1.1",
+    "symfony/console": "^3.1",
+    "symfony/filesystem": "^3.1",
+    "symfony/finder": "^3.1",
+    "symfony/process": "^3.1",
+    "twig/twig": "^1.25"
+  }
+}

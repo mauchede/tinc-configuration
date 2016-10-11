@@ -1,0 +1,27 @@
+{
+  "chmod": "0755",
+  "compactors": [
+    "Herrera\\Box\\Compactor\\Php"
+  ],
+  "directories": [
+    "src"
+  ],
+  "extract": true,
+  "files": [
+    "LICENSE"
+  ],
+  "finder": [
+    {
+      "name": "*.php",
+      "exclude": [
+        "Tests",
+        "tests",
+        "test"
+      ],
+      "in": "vendor"
+    }
+  ],
+  "main": "bin/tinc-configuration",
+  "output": "dist/tinc-configuration.phar",
+  "stub": true
+}

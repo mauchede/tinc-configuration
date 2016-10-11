@@ -1,0 +1,7 @@
+AddressFamily = {{ configuration.ipVersion.value }}
+Interface = {{ configuration.interface }}
+Name = {{ configuration.currentHost.name }}
+
+{% for host in configuration.connectedHosts %}
+    ConnectTo = {{ host.name }}
+{% endfor %}

@@ -1,0 +1,134 @@
+#!/usr/bin/env php
+<?php
+
+require_once __DIR__.'/../vendor/autoload.php';
+
+use Mauchede\TincConfiguration\Command\AddConnectionCommand;
+use Mauchede\TincConfiguration\Command\AddHostCommand;
+use Mauchede\TincConfiguration\Command\InfoCommand;
+use Mauchede\TincConfiguration\Command\InfoHostCommand;
+use Mauchede\TincConfiguration\Command\InitCommand;
+use Mauchede\TincConfiguration\Command\RemoveConnectionCommand;
+use Mauchede\TincConfiguration\Command\RemoveHostCommand;
+use Mauchede\TincConfiguration\Manager\ConfigurationManager;
+use Mauchede\TincConfiguration\Manager\KeyManager;
+use Pimple\Container;
+use Symfony\Component\Console\Application;
+use Symfony\Component\Console\Helper\FormatterHelper;
+use Symfony\Component\Console\Helper\HelperSet;
+use Symfony\Component\Console\Helper\ProcessHelper;
+use Symfony\Component\Console\Helper\SymfonyQuestionHelper;
+use Symfony\Component\Filesystem\Filesystem;
+use Symfony\Component\Finder\Finder;
+
+$container = new Container(
+    [
+        'name' => 'tinc-configuration',
+        'version' => 'master',
+    ]
+);
+
+$container['application'] = function (Container $container) {
+    $application = new Application($container['name'], $container['version']);
+    $application->setHelperSet(new HelperSet());
+
+    foreach ($container->keys() as $key) {
+        if (0 === strpos($key, 'command.')) {
+            $application->add($container[$key]);
+            continue;
+        }
+
+        if (0 === strpos($key, 'helper.')) {
+            $application->getHelperSet()->set($container[$key]);
+            continue;
+        }
+    }
+
+    return $application;
+};
+
+$container['command.add_connection'] = function (Container $container) {
+    return new AddConnectionCommand(
+        $container['manager.configuration']
+    );
+};
+
+$container['command.add_host'] = function (Container $container) {
+    return new AddHostCommand(
+        $container['manager.configuration'],
+        $container['manager.key']
+    );
+};
+
+$container['command.info'] = function (Container $container) {
+    return new InfoCommand(
+        $container['manager.configuration']
+    );
+};
+
+$container['command.info_host'] = function (Container $container) {
+    return new InfoHostCommand(
+        $container['manager.configuration']
+    );
+};
+
+$container['command.init'] = function (Container $container) {
+    return new InitCommand(
+        $container['manager.configuration'],
+        $container['manager.key']
+    );
+};
+
+$container['command.remove_connection'] = function (Container $container) {
+    return new RemoveConnectionCommand(
+        $container['manager.configuration']
+    );
+};
+
+$container['command.remove_host'] = function (Container $container) {
+    return new RemoveHostCommand(
+        $container['manager.configuration']
+    );
+};
+
+$container['helper.formatter'] = function () {
+    return new FormatterHelper();
+};
+
+$container['helper.process'] = function () {
+    return new ProcessHelper();
+};
+
+$container['helper.question'] = function () {
+    return new SymfonyQuestionHelper();
+};
+
+$container['manager.configuration'] = function (Container $container) {
+    return new ConfigurationManager(
+        $container['manager.filesystem'],
+        $container['manager.finder'],
+        $container['twig']
+    );
+};
+
+$container['manager.filesystem'] = function () {
+    return new Filesystem();
+};
+
+$container['manager.finder'] = function () {
+    return new Finder();
+};
+
+$container['manager.key'] = function (Container $container) {
+    return new KeyManager(
+        $container['manager.filesystem']
+    );
+};
+
+$container['twig'] = function () {
+    return new Twig_Environment(
+        new Twig_Loader_Filesystem(__DIR__.'/../src/Resources/templates')
+    );
+};
+
+$container['application']->run();
