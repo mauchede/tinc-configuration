@@ -81,7 +81,7 @@ class InitCommand extends AbstractCommand
                 $interface
             )
         );
-        $this->output->writeln(sprintf('<info>Configuration of host "%s" has been created.</info>', $name));
+        $this->output->writeln(sprintf('<info>Configuration of host "%s" has been initialized.</info>', $name));
 
         return self::EXIT_SUCCESS;
     }

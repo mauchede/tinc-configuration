@@ -28,7 +28,7 @@ class PublicKey
     /**
      * @return string
      */
-    function __toString()
+    public function __toString()
     {
         return $this->content;
     }

@@ -1,5 +1,9 @@
 # README
 
+tinc-configuration gives the possibility to easily manage [tinc](https://www.tinc-vpn.org/).
+
+[![SensioLabsInsight](https://insight.sensiolabs.com/projects/7ec0a156-1b9c-4103-ae46-65c69531e593/big.png)](https://insight.sensiolabs.com/projects/7ec0a156-1b9c-4103-ae46-65c69531e593)
+
 ## Installation
 
 ```sh
