@@ -5,6 +5,11 @@ namespace Mauchede\TincConfiguration\Exception;
 use IPTools\IP;
 use Mauchede\TincConfiguration\Model\IpVersion;
 
+/**
+ * InvalidIpVersionException is thrown when an IP does not match with an IP version.
+ *
+ * @author Morgan Auchede <morgan.auchede@gmail.com>
+ */
 class InvalidIpVersionException extends \InvalidArgumentException
 {
     /**

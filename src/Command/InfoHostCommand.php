@@ -8,6 +8,11 @@ use Mauchede\TincConfiguration\Model\Host;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Question\ChoiceQuestion;
 
+/**
+ * InfoHostCommand gives information about a specific host of the tinc configuration.
+ *
+ * @author Morgan Auchede <morgan.auchede@gmail.com>
+ */
 class InfoHostCommand extends AbstractCommand
 {
     /**

@@ -2,6 +2,11 @@
 
 namespace Mauchede\TincConfiguration\Exception;
 
+/**
+ * InvalidPublicKeyException is thrown when the content of a public key is invalid.
+ *
+ * @author Morgan Auchede <morgan.auchede@gmail.com>
+ */
 class InvalidPublicKeyException extends \RuntimeException
 {
     /**

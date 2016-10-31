@@ -13,6 +13,11 @@ use Mauchede\TincConfiguration\Model\PublicKey;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Question\Question;
 
+/**
+ * AddHostCommand adds a host to the tinc configuration.
+ *
+ * @author Morgan Auchede <morgan.auchede@gmail.com>
+ */
 class AddHostCommand extends AbstractCommand
 {
     /**

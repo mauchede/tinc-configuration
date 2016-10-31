@@ -14,6 +14,11 @@ use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Question\ChoiceQuestion;
 use Symfony\Component\Console\Question\Question;
 
+/**
+ * InitCommand initializes the tinc configuration.
+ *
+ * @author Morgan Auchede <morgan.auchede@gmail.com>
+ */
 class InitCommand extends AbstractCommand
 {
     /**

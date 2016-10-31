@@ -5,6 +5,11 @@ namespace Mauchede\TincConfiguration\Exception;
 use IPTools\IP;
 use Mauchede\TincConfiguration\Model\Host;
 
+/**
+ * IpAlreadyUsedException is thrown when the public IP or the private IP of a host is already used.
+ *
+ * @author Morgan Auchede <morgan.auchede@gmail.com>
+ */
 class IpAlreadyUsedException extends \RuntimeException
 {
     /**

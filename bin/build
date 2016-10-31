@@ -2,6 +2,7 @@
 set -e
 cd "`dirname "$0"`/.."
 
-composer install --no-dev --optimize-autoloader
+[ -f bin/phpunit ] && \
+    composer install --no-dev --optimize-autoloader
 
 box build

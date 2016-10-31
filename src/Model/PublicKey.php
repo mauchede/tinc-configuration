@@ -4,6 +4,11 @@ namespace Mauchede\TincConfiguration\Model;
 
 use Mauchede\TincConfiguration\Exception\InvalidPublicKeyException;
 
+/**
+ * PublicKey is the representation of a tinc public key.
+ *
+ * @author Morgan Auchede <morgan.auchede@gmail.com>
+ */
 class PublicKey
 {
     /**
@@ -14,7 +19,7 @@ class PublicKey
     /**
      * @param string $content
      *
-     * @throws InvalidPublicKeyException
+     * @throws InvalidPublicKeyException if the content is not a public key.
      */
     public function __construct($content)
     {

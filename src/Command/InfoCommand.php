@@ -5,6 +5,11 @@ namespace Mauchede\TincConfiguration\Command;
 use Mauchede\TincConfiguration\Manager\ConfigurationManager;
 use Symfony\Component\Console\Helper\Table;
 
+/**
+ * InfoCommand gives information about the tinc configuration.
+ *
+ * @author Morgan Auchede <morgan.auchede@gmail.com>
+ */
 class InfoCommand extends AbstractCommand
 {
     /**

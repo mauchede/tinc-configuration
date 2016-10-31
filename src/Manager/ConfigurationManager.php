@@ -11,6 +11,11 @@ use Mauchede\TincConfiguration\Model\PublicKey;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Finder\Finder;
 
+/**
+ * ConfigurationManager gives the possibility to manage tinc configuration.
+ *
+ * @author Morgan Auchede <morgan.auchede@gmail.com>
+ */
 class ConfigurationManager
 {
     /**
@@ -19,24 +24,17 @@ class ConfigurationManager
     private $filesystem;
 
     /**
-     * @var Finder
-     */
-    private $finder;
-
-    /**
      * @var \Twig_Environment
      */
     private $twig;
 
     /**
      * @param Filesystem        $filesystem
-     * @param Finder            $finder
      * @param \Twig_Environment $twig
      */
-    public function __construct(Filesystem $filesystem, Finder $finder, \Twig_Environment $twig)
+    public function __construct(Filesystem $filesystem, \Twig_Environment $twig)
     {
         $this->filesystem = $filesystem;
-        $this->finder = $finder;
         $this->twig = $twig;
     }
 
@@ -53,7 +51,7 @@ class ConfigurationManager
         }
 
         $hosts = [];
-        foreach ($this->finder->files()->in(sprintf('%s/hosts', $configurationFolder)) as $hostFile) {
+        foreach ((new Finder())->files()->in(sprintf('%s/hosts', $configurationFolder)) as $hostFile) {
             $hostData = file_get_contents($hostFile);
 
             preg_match('`Address = (.*)`', $hostData, $match);

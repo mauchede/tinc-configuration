@@ -7,6 +7,11 @@ use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Process\Exception\ProcessFailedException;
 use Symfony\Component\Process\Process;
 
+/**
+ * KeyManager gives the possibility to manage tinc keys.
+ *
+ * @author Morgan Auchede <morgan.auchede@gmail.com>
+ */
 class KeyManager
 {
     /**
@@ -27,7 +32,7 @@ class KeyManager
      *
      * @return PublicKey
      *
-     * @throws ProcessFailedException
+     * @throws ProcessFailedException if key generation has failed.
      */
     public function generateKeys($configurationFolder)
     {

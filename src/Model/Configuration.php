@@ -10,6 +10,11 @@ use Mauchede\TincConfiguration\Exception\InvalidIpVersionException;
 use Mauchede\TincConfiguration\Exception\IpAlreadyUsedException;
 use Mauchede\TincConfiguration\Exception\UnknownHostException;
 
+/**
+ * Configuration is a representation of a tinc configuration.
+ *
+ * @author Morgan Auchede <morgan.auchede@gmail.com>
+ */
 class Configuration
 {
     /**
@@ -38,9 +43,9 @@ class Configuration
     private $ipVersion;
 
     /**
-     * @param Host           $currentHost
-     * @param IpVersion|null $ipVersion
-     * @param string         $interface
+     * @param Host      $currentHost
+     * @param IpVersion $ipVersion
+     * @param string    $interface
      */
     public function __construct(Host $currentHost, IpVersion $ipVersion, $interface)
     {
@@ -55,8 +60,8 @@ class Configuration
      *
      * @return self
      *
-     * @throws CurrentHostCanNotBeConnectedException
-     * @throws UnknownHostException
+     * @throws CurrentHostCanNotBeConnectedException if $host is the current host.
+     * @throws UnknownHostException if the host does not exist in the configuration.
      */
     public function addConnectedHost(Host $host)
     {
@@ -78,9 +83,9 @@ class Configuration
      *
      * @return self
      *
-     * @throws InvalidIpVersionException
-     * @throws IpAlreadyUsedException
-     * @throws HostNameAlreadyUsedException
+     * @throws InvalidIpVersionException if the public IP or private IP of the host does not match with the IP version.
+     * @throws IpAlreadyUsedException if the public IP or private IP is already used.
+     * @throws HostNameAlreadyUsedException if the host name is already used.
      */
     public function addHost(Host $host)
     {
@@ -239,7 +244,7 @@ class Configuration
      *
      * @return self
      *
-     * @throws CurrentHostCanNotBeRemovedException
+     * @throws CurrentHostCanNotBeRemovedException if $host is the current host.
      */
     public function removeHost(Host $host)
     {
@@ -259,14 +264,18 @@ class Configuration
      *
      * @return self
      *
-     * @throws InvalidIpVersionException
+     * @throws InvalidIpVersionException if the public IP or private IP of the host does not match with the IP version.
      */
     private function setCurrentHost(Host $currentHost)
     {
         $privateIp = $currentHost->getPrivateIp();
+        $publicIp = $currentHost->getPublicIp();
 
         if (!$this->ipVersion->isIpAllowed($privateIp)) {
             throw new InvalidIpVersionException($this->ipVersion, $privateIp);
+        }
+        if (!$this->ipVersion->isIpAllowed($publicIp)) {
+            throw new InvalidIpVersionException($this->ipVersion, $publicIp);
         }
 
         $this->currentHost = $currentHost;

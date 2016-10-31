@@ -8,6 +8,11 @@ use Mauchede\TincConfiguration\Model\Host;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Question\ChoiceQuestion;
 
+/**
+ * RemoveConnectionCommand removes a connection to the tinc configuration.
+ *
+ * @author Morgan Auchede <morgan.auchede@gmail.com>
+ */
 class RemoveConnectionCommand extends AbstractCommand
 {
     /**

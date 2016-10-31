@@ -3,5 +3,5 @@ Interface = {{ configuration.interface }}
 Name = {{ configuration.currentHost.name }}
 
 {% for host in configuration.connectedHosts %}
-    ConnectTo = {{ host.name }}
+ConnectTo = {{ host.name }}
 {% endfor %}

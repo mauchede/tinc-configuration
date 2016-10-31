@@ -5,6 +5,11 @@ namespace Mauchede\TincConfiguration\Model;
 use IPTools\IP;
 use IPTools\Network;
 
+/**
+ * Host is a representation of a tinc host.
+ *
+ * @author Morgan Auchede <morgan.auchede@gmail.com>
+ */
 class Host
 {
     /**

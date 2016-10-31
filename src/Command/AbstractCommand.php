@@ -8,6 +8,11 @@ use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Question\Question;
 
+/**
+ * AbstractCommand is an abstract implementation Command.
+ *
+ * @author Morgan Auchede <morgan.auchede@gmail.com>
+ */
 abstract class AbstractCommand extends Command
 {
     const EXIT_FAILURE = 1;
@@ -34,9 +39,14 @@ abstract class AbstractCommand extends Command
         $this->doConfigure();
     }
 
+    /**
+     * Configures the current command.
+     */
     abstract protected function doConfigure();
 
     /**
+     * Executes the current command.
+     *
      * @return int
      */
     abstract protected function doExecute();
@@ -86,6 +96,8 @@ abstract class AbstractCommand extends Command
     }
 
     /**
+     * Gets the value of an option. If the option is blank or the value is invalid, the question will be asked.
+     *
      * @param string   $name
      * @param Question $question
      *

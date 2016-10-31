@@ -8,6 +8,11 @@ use Mauchede\TincConfiguration\Model\Host;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Question\ChoiceQuestion;
 
+/**
+ * AddConnectionCommand adds a connection to the tinc configuration.
+ *
+ * @author Morgan Auchede <morgan.auchede@gmail.com>
+ */
 class AddConnectionCommand extends AbstractCommand
 {
     /**
