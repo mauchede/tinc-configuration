@@ -2,6 +2,8 @@
 
 tinc-configuration gives the possibility to easily manage [tinc](https://www.tinc-vpn.org/).
 
+⚠️ This project is no longer maintained. ⚠️
+
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/7ec0a156-1b9c-4103-ae46-65c69531e593/big.png)](https://insight.sensiolabs.com/projects/7ec0a156-1b9c-4103-ae46-65c69531e593)
 
 ## Installation
@@ -48,14 +50,6 @@ tinc-configuration connection:remove --name nodeB
 
 tinc-configuration host:remove --name nodeB
 ```
-
-## Contributing
-
-1. Fork it.
-2. Create your branch: `git checkout -b my-new-feature`.
-3. Commit your changes: `git commit -am 'Add some feature'`.
-4. Push to the branch: `git push origin my-new-feature`.
-5. Submit a pull request.
 
 ## Credits
 
